@@ -2,40 +2,6 @@
 #include <iomanip>
 #include <cmath>
 
-template<typename R, typename E>
-class Result {
-private:
-  R *val;
-  E *err;
-
-  Result(R val) {
-    this->val = new R(val);
-    this->err = nullptr;
-  }
-
-  Result(E err) {
-    this->val = nullptr;
-    this->err = new E(err);
-  }
-
-public:
-  static Result Ok(R val) {
-    return Result(val);
-  }
-
-  static Result Err(E err) {
-    return Result(err);
-  }
-
-  void whenOk(std::function<void(E)> func) {
-    func(*val);
-  }
-
-  void whenErr(std::function<void(E)> func) {
-    func(*err);
-  }
-};
-
 template<typename MatType>
 struct Mat {
   int rows, cols;
@@ -166,7 +132,7 @@ struct Mat {
     }
   }
 
-  void add(Mat &other) {
+  Mat<MatType> add(Mat &other) {
     Mat<MatType> copy(*this);
     copy._add(other);
     return copy;
@@ -423,9 +389,10 @@ int main(int argc, char *argv[]) {
   // A^T Ax = A^T b
   // x = (A^T A)^-1 A^T b
 
-  auto aT = a.transpose();
-  auto x = aT.mul(a).inv().mul(aT).mul(b);
+  // auto aT = a.transpose();
+  // auto x = aT.mul(a).inv().mul(aT).mul(b);
 
+  auto x = a.inv().mul(b);
 
   a.print(std::cout, "A");
   a.inv().print(std::cout, "A^-1");
