@@ -94,8 +94,3 @@ int main() {
 
     return 0;
 }
-
-/*
- * TODO: write model params into file
- * TODO: read the file on python side
- */
