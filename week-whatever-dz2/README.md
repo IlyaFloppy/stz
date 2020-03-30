@@ -10,4 +10,4 @@ python3 plot_model.py
 ```bash
 ./run.sh
 ```
-![Картинка](week-whatever-dz2/plot.png?raw=true "Картинка")
+![Картинка](plot.png?raw=true "Картинка")
