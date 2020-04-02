@@ -11,3 +11,6 @@ python3 plot_model.py
 ./run.sh
 ```
 ![Картинка](plot.png?raw=true "Картинка")
+
+# Хмм...
+![hm](hm.png?raw=true "hm")
